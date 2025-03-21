@@ -3,6 +3,27 @@
  * 
  * @author David J. Barnes and Michael Kölling.
  * @version    2016.02.29
+ * 
+ * Q.1 Busiest: 18, 10, 14
+ * 
+ * Q.2 Person[] person
+ * 
+ * Q.3 boolean[] vacant
+ * 
+ * Q.4 Constructor, analyzeHourlyData(), printHourlyCounts(). 2 times
+ * 
+ * Q.5 int[] counts;
+ *     occupied = new boolean[5000];
+ *     
+ * Q.6 a) readings = new double[60];
+ *     b) urls = new String[90];
+ *     c) machine = new TicketMachine[5]
+ *     
+ * Q.7 20
+ * 
+ * Q.8 double[] prices = new double[50];
+ * 
+ * Q.9 Index out of bounds
  */
 public class LogAnalyzer
 {
@@ -21,6 +42,11 @@ public class LogAnalyzer
         hourCounts = new int[24];
         // Create the reader to obtain the data.
         reader = new LogfileReader();
+    }
+    
+    public LogAnalyzer(String filename) //12
+    {
+        reader = new LogfileReader(filename);
     }
 
     /**
@@ -43,8 +69,14 @@ public class LogAnalyzer
     public void printHourlyCounts()
     {
         System.out.println("Hr: Count");
-        for(int hour = 0; hour < hourCounts.length; hour++) {
+        /*for(int hour = 0; hour < hourCounts.length; hour++) {
             System.out.println(hour + ": " + hourCounts[hour]);
+        }*/
+        int hour = 0; //Q. 10
+        while(hour < hourCounts.length)
+        {
+            System.out.println(hour + ": " + hourCounts[hour]);
+            hour++;
         }
     }
     
@@ -54,5 +86,15 @@ public class LogAnalyzer
     public void printData()
     {
         reader.printData();
+    }
+    
+    public void printGreater(double mean) //Q.11
+    {
+        double[] marks = {1.1, 5.7, 6.6, 9.2, 10.4};
+        for(int index = 0; index < marks.length; index++) {
+            if(marks[index] > mean) {
+                System.out.println(marks[index]);
+            }
+        }
     }
 }
